@@ -14,3 +14,4 @@ cv <- function(x){(sd(x)/mean(x))*100}
 sapply(as.list(df[,-1]), cv)
 
 #elo
+#elo mordelo

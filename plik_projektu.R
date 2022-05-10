@@ -13,3 +13,4 @@ df %>% as_tibble()
 cv <- function(x){(sd(x)/mean(x))*100}
 sapply(as.list(df[,-1]), cv)
 
+#elo

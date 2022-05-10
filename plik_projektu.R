@@ -1,7 +1,7 @@
 library(dplyr)
 #wczytywanie danych
-df <- readxl::read_excel(path = "./Dane-Nowak-Okoń.xlsx")
-
+df <- readxl::read_excel(path = "./Data.xlsx")
+getwd()
 #poprawa kolumn
 df <- df %>% janitor::clean_names()
 

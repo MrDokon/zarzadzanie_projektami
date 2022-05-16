@@ -19,3 +19,7 @@ sapply(as.list(df[,-1]), cv)
 
 #elo mordelo
 
+##Siema co tam
+12+4
+is.numeric(df)
+scale(df)

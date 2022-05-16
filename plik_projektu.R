@@ -19,9 +19,11 @@ sapply(as.list(df[,-1]), cv)
 
 #elo mordelo
 
-##Siema co tam
+##Siema co tamdasdasdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 ##DDFAASFFAFAFSasffssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
 12+4
 is.numeric(df)
 asfassdddddddddddddddd;
 scale(df)
+##affaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+1+1

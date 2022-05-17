@@ -1,17 +1,19 @@
 library(dplyr)
 #wczytywanie danych
 df <- readxl::read_excel(path = "./Data.xlsx")
-getwd()
+
 #poprawa kolumn
 df <- df %>% janitor::clean_names()
-
+str(df)
 #sprawdzenie kolumn
 df %>% glimpse()
 df %>% as_tibble()
 
+df <- df %>% select(-working_pop_pct)
 #zmiennosc
 cv <- function(x){(sd(x)/mean(x))*100}
 sapply(as.list(df[,-1]), cv)
+
 
 #elo
 

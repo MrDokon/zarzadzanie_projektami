@@ -14,7 +14,8 @@ df <- df %>% select(-working_pop_pct)
 cv <- function(x){(sd(x)/mean(x))*100}
 sapply(as.list(df[,-1]), cv)
 
-
+corrplot::corrplot(
+  cor(df[,-c(1,9,10)]), method = "number")
 #elo
 
 #damian - elo

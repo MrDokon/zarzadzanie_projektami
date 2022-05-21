@@ -1,0 +1,60 @@
+<!-- R Commander Markdown Template -->
+
+Replace with Main Title
+=======================
+
+### Your Name
+
+### `r as.character(Sys.Date())`
+
+```{r echo=FALSE}
+# include this code chunk as-is to set options
+knitr::opts_chunk$set(comment=NA, prompt=TRUE, out.width=750, fig.height=8, fig.width=8)
+library(Rcmdr)
+library(car)
+library(RcmdrMisc)
+```
+
+
+```{r echo=FALSE}
+# include this code chunk as-is to enable 3D graphs
+library(rgl)
+knitr::knit_hooks$set(webgl = hook_webgl)
+```
+
+
+```{r}
+Dataset <- 
+  readXL("C:/Users/fearl/Documents/Projekt/zarzadzanie_projektami/Efekt3/Dane_Rcmd/Rcmd.xlsx",
+   rownames=FALSE, header=TRUE, na="", sheet="Arkusz1", stringsAsFactors=TRUE)
+```
+
+```{r}
+local({
+  .Table <- with(Dataset, table(joined_EU))
+  cat("\ncounts:\n")
+  print(.Table)
+  cat("\npercentages:\n")
+  print(round(100*.Table/sum(.Table), 2))
+})
+```
+
+```{r}
+cor(Dataset[,c("emp_deadline_pct","GDP_pc","high_tech_trade_pc","is_euro_currency","nuclear_electricity","phycisians_per_1000",
+  "r.d_bud_pct","r.d_gdp_pct","sea_access","use_cloud_pct","weeknd_work_pct","working_pop_pct")], use="complete")
+```
+
+```{r}
+library(lattice, pos=17)
+library(survival, pos=17)
+library(Formula, pos=17)
+library(ggplot2, pos=17)
+library(Hmisc, pos=17)
+rcorr.adjust(Dataset[,c("emp_deadline_pct","GDP_pc","high_tech_trade_pc","is_euro_currency","nuclear_electricity","phycisians_per_1000","r.d_bud_pct","r.d_gdp_pct",
+  "sea_access","use_cloud_pct","weeknd_work_pct","working_pop_pct")], type="pearson", use="complete")
+```
+
+```{r}
+with(Dataset, Hist(GDP_pc, scale="frequency", breaks="Sturges", col="darkgray"))
+```
+

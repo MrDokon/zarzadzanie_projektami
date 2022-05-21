@@ -16,18 +16,13 @@ sapply(as.list(df[,-1]), cv)
 
 corrplot::corrplot(
   cor(df[,-c(1,9,10)]), method = "number")
-#elo
+##DO ZMIENNOSCI SI EXCELA LICZY JAK NA ADR
 
-#damian - elo
+cor(DaneAnaliza)
+korelacje<-as.numeric(cor(DaneAnaliza))
+korelacje<-korelacje %>% as.data.frame()
+korelacje %>% ggplot(aes(x=.,fill=2))+geom_density()+labs(x="Korelacje",y="Gęstość")
+corrplot(cor(DaneAnaliza))
 
-#elo mordelo
-
-##Siema co tamdasdasdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-##DDFAASFFAFAFSasffssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-12+4
-is.numeric(df)
-asfassdddddddddddddddd;
-scale(df)
-##affaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-1+1
-1+2
+##geom col
+Rcmd %>%   group_by(joined_EU)  %>% summarise(liczba_krajów=n()) %>% ggplot(aes(x=joined_EU,y=liczba_krajów,la,label=liczba_krajów))+geom_col()

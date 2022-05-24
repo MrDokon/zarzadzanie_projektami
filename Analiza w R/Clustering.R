@@ -9,6 +9,8 @@ library(tidyr)
 library(fpc)
 library(cowplot)
 
+
+#PCA zmienić - gdp_pc w piewszym wymiarze
 #wczytywanie danych i poprawa danych
 df <- readxl::read_excel(path = "./Data.xlsx")
 df <- df %>% janitor::clean_names()
@@ -132,7 +134,7 @@ df$cluster.km <-  kmeans(df_standarized,
 
 #Zamiana na postać długą v2
 df_long <-  df %>% 
-  pivot_longer(gdp_pc:phycisians_per_1000,
+  pivot_longer(:phycisians_per_1000,
                values_to = "value",
                names_to = "zmienna")
 
@@ -225,8 +227,7 @@ ggplot(dflong_last_plot,
 #http://www.sthda.com/english/articles/32-r-graphics-essentials/129-visualizing-multivariate-categorical-data/
 df_categorical <-  df %>% select(country, where(is.factor))
 
-df_categorical %>% group_by(cluster.w) %>% summarise(n())
-
+df_categorical  %>% count(joined_eu, sea_access)
 
 
 

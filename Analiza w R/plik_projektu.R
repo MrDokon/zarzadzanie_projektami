@@ -1,5 +1,9 @@
 #NIE ODWOLUJEMY SIE DO OBIEKTOW, KTORE NIE SA WIDOCZNE Z POZIOMU TEGO SKRYPTU
+#KW
 #https://www.youtube.com/watch?v=U-hS2zoRPOY
+
+#mann - witney
+#https://www.youtube.com/watch?v=2sZp51etL3c
 
 library(dplyr)
 #wczytywanie danych

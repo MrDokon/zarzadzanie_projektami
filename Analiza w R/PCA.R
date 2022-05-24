@@ -20,22 +20,22 @@ df %>% as_tibble()
 df_cor <- df %>% select(where(is.double))
 df_cor<-df_cor %>% select(c(-sea_access,-nuclear_electricity,-is_euro_currency))
 
-corrplot::corrplot(cor(df_cor),
+corrplot::corrplot(cor(df_cor[,-1]),
                    method = "color",
                    type="lower",
                    addCoef.col = "black") 
 
 ##Test sferyczności Barletta
-cortest.bartlett(cor(df_cor), n = nrow(df_cor)) #ist gut
+cortest.bartlett(cor(df_cor[,-1]), n = nrow(df_cor)) #ist gut
 
 #Kryterium KMO
-KMO(cor(df_cor))
+KMO(cor(df_cor[,-1]))
 
 ##Standaryzacja zmiennych
-df_standarized <-  scale(df_cor) %>% as.data.frame()
+df_standarized <-  scale(df_cor[,-1]) %>% as.data.frame()
 rownames(df_standarized) <- df$country
 
-##Analiza PCA
+##Analiza PCA - UWAGA ZMIENIA SIĘ INTERPRETACJA!!!, BO -GDP_PC
 pca_object <- PCA(df_standarized, graph = F, ncp = 8)
 pca_object
 
@@ -64,3 +64,4 @@ fviz_pca_ind(pca_object,
 #do analizy wymiarów
 principal(df_cor,2,rotate="none", nfactors = 8)
 principal(df_cor,2,rotate="none", nfactors = 2)
+

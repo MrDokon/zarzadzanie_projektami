@@ -26,11 +26,9 @@ str(df)
 df %>% glimpse()
 df %>% as_tibble()
 
-##Sprawdzenie korelaji i ich istotność
-df_cor <- df %>% select(where(is.double))
-
 ##Standaryzacja zmiennych
-df_standarized <-  scale(df_cor) %>% as.data.frame()
+df_cor <- df %>% select(where(is.double))
+df_standarized <-  scale(df_cor[,-1]) %>% as.data.frame()
 rownames(df_standarized) <- df$country
 
 #Wykresy punktowe danych
@@ -59,7 +57,7 @@ df$cluster.w <- cutree(hc1, k = 3) %>% as.factor()
 
 #Zamiana na postać długą
 df_long <- df %>% 
-  pivot_longer(gdp_pc:phycisians_per_1000,
+  pivot_longer(high_tech_trade_pc:phycisians_per_1000,
                values_to = "value",
                names_to = "zmienna")
 
@@ -79,7 +77,8 @@ ggplot(df_long,
   scale_color_manual(values = c("#000a14", "#9a0707", "#0052a3"))
 
 #sprawdzenie
-df_long %>% group_by(zmienna, cluster.w) %>% summarise(median(value)) %>% arrange(desc(zmienna, cluster.w))
+df_long %>% group_by(zmienna, cluster.w) %>% summarise(median(value)) %>%
+  arrange(desc(zmienna))
 df_long %>% filter(cluster.w == 1) %>% group_by( zmienna) %>% summarise(median(value)) %>% arrange(zmienna)
 df_long %>% filter(cluster.w == 2) %>% group_by( zmienna) %>% summarise(median(value)) %>% arrange(zmienna)
 df_long %>% filter(cluster.w == 3) %>% group_by( zmienna) %>% summarise(median(value)) %>% arrange(zmienna)
@@ -134,12 +133,12 @@ df$cluster.km <-  kmeans(df_standarized,
 
 #Zamiana na postać długą v2
 df_long <-  df %>% 
-  pivot_longer(:phycisians_per_1000,
+  pivot_longer(gdp_pc:phycisians_per_1000,
                values_to = "value",
                names_to = "zmienna")
 
 #Kmeans - wykres
-ggplot(df_long,
+ggplot(df_long %>% filter(zmienna != "gdp_pc"),
        aes(value,cluster.km, col = cluster.km, fill = cluster.km))+
   geom_boxplot(alpha = .5)+
   facet_wrap(vars(zmienna),

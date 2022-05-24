@@ -1,7 +1,7 @@
 #NIE ODWOLUJEMY SIE DO OBIEKTOW, KTORE NIE SA WIDOCZNE Z POZIOMU TEGO SKRYPTU
 
 
-library(tidyverse)
+library(dplyr)
 #wczytywanie danych
 df <- readxl::read_excel(path = "./Data.xlsx")
 
@@ -13,6 +13,7 @@ df %>% glimpse()
 df %>% as_tibble()
 
 df <- df %>% select(-working_pop_pct)
+df$joined_eu <- as.factor(df$joined_eu)
 #zmiennosc
 #cv <- function(x){(sd(x)/mean(x))*100}
 #sapply(as.list(df[,-1]), cv)

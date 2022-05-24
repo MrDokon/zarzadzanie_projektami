@@ -221,6 +221,20 @@ ggplot(dflong_last_plot,
 
 #wizualizacja danych kateogrycznych
 
+#ogólna wizualizacja zmiennych kategorycznych
+#http://www.sthda.com/english/articles/32-r-graphics-essentials/129-visualizing-multivariate-categorical-data/
+df_categorical <-  df %>% select(country, where(is.factor))
+
+df_categorical %>% group_by(cluster.w) %>% summarise(n())
+
+
+
+
+#regresja - gpd_pct
+#klasyfikacja - joined_eu
+
+
+
 
   
   

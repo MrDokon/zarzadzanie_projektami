@@ -1,5 +1,5 @@
 #NIE ODWOLUJEMY SIE DO OBIEKTOW, KTORE NIE SA WIDOCZNE Z POZIOMU TEGO SKRYPTU
-
+#https://www.youtube.com/watch?v=U-hS2zoRPOY
 
 library(dplyr)
 #wczytywanie danych

@@ -152,43 +152,6 @@ ggplot(df_long %>% filter(zmienna != "gdp_pc"),
   scale_fill_manual(values = c("#000a14","#9a0707")) +
   scale_color_manual(values = c("#000a14","#9a0707"))
 
-#Kmeans vs Hclust GDP per Capita - wykres
-ggplot(df_long %>% filter(zmienna == "gdp_pc") %>% 
-         pivot_longer(cluster.w:cluster.km,
-                      names_to = "cluster",
-                      values_to = "cluster_value"),
-       aes(value,cluster_value, col = cluster_value,
-           fill = cluster_value))+
-  geom_boxplot(alpha = .5)+
-  facet_wrap(vars(cluster),
-             scales = "free_y",
-             ncol = 4) +
-  ylab("") +
-  xlab("") +
-  theme_light() + 
-  theme(strip.text = element_text(size=11, color = "black")) +
-  ggtitle("GDP per capita kmeans vs hclust") +
-  scale_fill_manual(values = c("#000a14","#9a0707","#0052a3")) +
-  scale_color_manual(values = c("#000a14","#9a0707","#0052a3")) + 
-  geom_curve(data = data.frame(x = 13228.3476837539,
-                               y = 0.73680235500068,
-                               xend = 13943.0469670678,
-                               yend = 0.993691405408211,
-                               cluster = "cluster.km"),
-             mapping = aes(x = x,
-                           y = y,
-                           xend = xend,
-                           yend = yend),
-             arrow = arrow(30L, unit(0.1, "inches"), "last", "closed"),
-             inherit.aes = FALSE) + 
-  geom_text(data = data.frame(x = 9064.855754389,
-                              y = 0.72946266784618,
-                              label = "Estonia",
-                              cluster = "cluster.km"),
-            mapping = aes(x = x,
-                          y = y,
-                          label = label),
-            colour = "#9a0707", inherit.aes = FALSE)
 
 #Kmeans vs Hclust PCA
 
@@ -216,25 +179,7 @@ ggplot(dflong_last_plot,
   ylab("") +
   theme_light() + 
   theme(strip.text = element_text(size=11, color = "black")) +
-  ggtitle("GDP per capita kmeans vs hclust") +
+  ggtitle("Hclust vs Kmeans") +
   scale_fill_manual(values = c("#000a14","#9a0707","#0052a3")) +
   scale_color_manual(values = c("#000a14","#9a0707","#0052a3"))
-
-#wizualizacja danych kateogrycznych
-
-#ogólna wizualizacja zmiennych kategorycznych
-#http://www.sthda.com/english/articles/32-r-graphics-essentials/129-visualizing-multivariate-categorical-data/
-df_categorical <-  df %>% select(country, where(is.factor))
-
-df_categorical  %>% count(joined_eu, sea_access)
-
-
-
-#regresja - gpd_pct
-#klasyfikacja - joined_eu
-
-
-
-
-  
   

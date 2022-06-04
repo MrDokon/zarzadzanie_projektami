@@ -23,6 +23,19 @@ df$nuclear_electricity <- as.factor(df$nuclear_electricity)
 
 df <- df %>% as.data.frame()
 rownames(df) <- df$country
+#       Właściwa Regresja #
+#--------------------#
+str(Rcmd)
+Rcmd %>% mutate(country=1:nrow(Rcmd))
+Regresja_dane<-Rcmd %>% select(-joined_EU,-sea_access,-nuclear_electricity,-is_euro_currency,-country)
+macierz_korelacji<-cor(Regresja_dane)
+library(PerformanceAnalytics)
+chart.Correlation(macierz_korelacji,histogram = TRUE, pch=20)
+colnames(Regresja_dane)
+
+macierz_korelacji
+
+
 
 
 

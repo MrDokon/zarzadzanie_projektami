@@ -8,7 +8,7 @@ library(GGally)
 library(tidyr)
 library(fpc)
 library(cowplot)
-
+library(mlr3verse)
 
 #wczytywanie danych i poprawa danych
 df <- readxl::read_excel(path = "./Data.xlsx")
@@ -36,8 +36,10 @@ PCA_df <-  PCA_object1$scores %>% as.data.frame()
 
 #ramka do regresji z PCA
 PCA_Regr <-  PCA_df %>% cbind.data.frame(.,gdp_pc = df$gdp_pc)
-
+colnames(PCA_Regr)
 ############## budowa modelu regresji liniowej
-regr_object <- lm(gdp_pc ~ ., data = PCA_Regr)
-regr_object %>% summary()
-
+summary(lm(gdp_pc~.,data=PCA_Regr))
+nauczyciel_regresja<-lrn("regr.lm")
+zadanie_regresja<-TaskRegr$new(id="regresja",backend = PCA_Regr,target="gdp_pc")
+nauczyciel_regresja$train(zadanie_regresja)
+summary(nauczyciel_regresja$model)

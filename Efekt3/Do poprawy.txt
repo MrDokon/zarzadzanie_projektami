@@ -1,0 +1,8 @@
+Poprawki obowiązkowe
+1. Poszerzyć 1 tablekę (wypisać zmienne kategoryczne)
+2. Współczynnik zmienności i korelacja do poprawy
+3. Zmienić nazwę histogram na wykres słupkowy
+
+Poprawki dodatkowe:
+1. Zbadać zależności zmiennych kategorycznych (chi - kwadrat)
+2. Zbadać zależność zmiennych numerycznych (Mann - whitney lub Kruskal Wallis, zobaczyć yt). 

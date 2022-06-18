@@ -65,3 +65,5 @@ fviz_pca_ind(pca_object,
 principal(df_cor,2,rotate="none", nfactors = 8)
 principal(df_cor,2,rotate="none", nfactors = 2)
 
+
+write.csv(df_standarized, file="data_pca_clustering.csv")

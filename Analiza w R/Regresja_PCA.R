@@ -43,3 +43,6 @@ nauczyciel_regresja<-lrn("regr.lm")
 zadanie_regresja<-TaskRegr$new(id="regresja",backend = PCA_Regr,target="gdp_pc")
 nauczyciel_regresja$train(zadanie_regresja)
 summary(nauczyciel_regresja$model)
+
+
+write.csv(PCA_df, file = "data_regr_PCA.csv")
